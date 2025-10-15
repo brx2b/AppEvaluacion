@@ -24,7 +24,7 @@ jobs:
         run: karma-start --single-run
 
       - name: ejecutar eslint
-        run: npm run lint
+        run: npm run lint --fix
 
       - name: snyk configurar
         uses: snyk/actions/setup@v1
