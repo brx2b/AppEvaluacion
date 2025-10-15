@@ -13,18 +13,16 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Instalar Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
+        uses: actions/setup-node
 
       - name: Instalar dependencias
         run: npm ci
-            
-      - name: ejecutar pruebas
-        run: npm test
-
+        
       - name: ejecutar eslint(fix)
         run: npm run lint 
+
+      - name: ejecutar pruebas
+        run: npm test
 
       - name: snyk configurar
         uses: snyk/actions/setup@v1
