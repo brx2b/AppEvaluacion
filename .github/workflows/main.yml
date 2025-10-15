@@ -24,7 +24,7 @@ jobs:
         run: npm run lint -- --fix
 
       - name: ejecutar pruebas
-        run: npx test
+        run: npx karma start --single-run
 
       - name: snyk configurar
         uses: snyk/actions/setup@v1
