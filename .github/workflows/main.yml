@@ -1,1 +1,41 @@
+name: pipeline evaluacion
 
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repositorio
+        uses: actions/checkout@v4
+
+      - name: Instalar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Instalar dependencias
+        run: npm ci
+    
+      - name: ejecutar eslint
+        run: npm run lint
+    
+      - name: ejecutar pruebas
+        run: npm test
+
+      - name: snyk configurar
+        uses: snyk/actions/setup@v1
+        env:
+            SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+      - name: snyk escanear
+        run: snyk test
+        env:
+            SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
+      - name: SonarCloud escaneo
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
