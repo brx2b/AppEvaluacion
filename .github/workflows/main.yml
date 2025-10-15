@@ -20,11 +20,11 @@ jobs:
       - name: Instalar dependencias
         run: npm ci
             
-      - name: ejecutar pruebas
-        run: karma-start --single-run
-
       - name: ejecutar eslint(fix)
         run: npm run lint --fix
+
+      - name: ejecutar pruebas
+        run: karma-start --single-run
 
       - name: snyk configurar
         uses: snyk/actions/setup@v1
