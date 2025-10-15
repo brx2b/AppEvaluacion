@@ -19,12 +19,12 @@ jobs:
 
       - name: Instalar dependencias
         run: npm ci
-    
-      - name: ejecutar eslint
-        run: npm run lint
-    
+            
       - name: ejecutar pruebas
         run: npm test
+        
+      - name: ejecutar eslint
+        run: npm run lint
 
       - name: snyk configurar
         uses: snyk/actions/setup@v1
