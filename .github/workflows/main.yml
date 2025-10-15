@@ -23,7 +23,7 @@ jobs:
       - name: ejecutar pruebas
         run: karma-start --single-run
 
-      - name: ejecutar eslint
+      - name: ejecutar eslint(fix)
         run: npm run lint --fix
 
       - name: snyk configurar
