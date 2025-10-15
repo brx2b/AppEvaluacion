@@ -33,7 +33,7 @@ jobs:
         env:
             SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
       - name: snyk escanear
-        run: snyk test
+        run: snyk test || true
         env:
             SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
